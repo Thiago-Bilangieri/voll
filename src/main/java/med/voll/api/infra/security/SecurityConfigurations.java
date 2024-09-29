@@ -20,22 +20,6 @@ public class SecurityConfigurations {
 
 
 
-    //Processo de Autenticação Stateless
-//    @Bean // Exportar para que seja possível injetar em outra classe
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        return http
-//                .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-//                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
-//                .csrf(csrf -> csrf.disable())
-//                .build();
-//    }
-//
-//    @Bean
-//    public WebSecurityCustomizer webSecurityCustomizer() {
-//        return (web) -> web.ignoring().requestMatchers(new AntPathRequestMatcher("/login"));
-//    }
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
