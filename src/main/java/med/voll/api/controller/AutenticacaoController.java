@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import med.voll.api.domain.usuario.DadosLoginUsuario;
 import med.voll.api.domain.usuario.Usuario;
 import med.voll.api.infra.security.TokenService;
-import med.voll.api.infra.security.dadosTokenJwt;
+import med.voll.api.infra.security.DadosTokenJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -33,7 +33,7 @@ public class AutenticacaoController {
         var tokenJWT = tokenService.generateToken((Usuario) authentication.getPrincipal());
 
 
-        return ResponseEntity.ok(new dadosTokenJwt(tokenJWT));
+        return ResponseEntity.ok(new DadosTokenJwt(tokenJWT));
 
     }
 }
