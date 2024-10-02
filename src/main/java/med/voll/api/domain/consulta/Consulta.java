@@ -2,6 +2,7 @@ package med.voll.api.domain.consulta;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import med.voll.api.domain.medico.Medico;
 import med.voll.api.domain.paciente.Paciente;
@@ -21,7 +22,7 @@ public class Consulta {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "medico_id")
+    @JoinColumn(name = "medico_id",nullable = false)
     private Medico medico;
 
     @ManyToOne
@@ -29,4 +30,12 @@ public class Consulta {
     private Paciente paciente;
 
     private LocalDateTime data;
+
+    @Column(name = "motivo_cancelamento")
+    @Enumerated(EnumType.STRING)
+    private MotivoCancelamento motivoCancelamento;
+
+    public void cancelar(@NotNull MotivoCancelamento motivo) {
+        this.motivoCancelamento = motivo;
+    }
 }
