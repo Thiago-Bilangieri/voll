@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/consultas")
-public class ConsultaController {
+public class    ConsultaController {
 
     @Autowired
     private ConsultaService consultaService;
@@ -24,9 +24,9 @@ public class ConsultaController {
     public ResponseEntity<DadosDetalhamentoConsulta> agendar(@RequestBody @Valid DadosAgendamentoConsulta dados) {
         System.out.println(dados);
 
-        consultaService.agendar(dados);
+        var consulta =consultaService.agendar(dados);
 
-        return ResponseEntity.ok(new DadosDetalhamentoConsulta(null, dados.idMedico(), dados.idPaciente(), null));
+        return ResponseEntity.ok(new DadosDetalhamentoConsulta(null, consulta.idMedico(), consulta.idPaciente(), consulta.data()    ));
 
     }
 
