@@ -82,4 +82,4 @@ class ConsultaControllerTest {
     @Test
     void delete() {
     }
-}\
+}
