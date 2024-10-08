@@ -22,7 +22,7 @@ public class Consulta {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "medico_id",nullable = false)
+    @JoinColumn(name = "medico_id", nullable = false)
     private Medico medico;
 
     @ManyToOne
@@ -34,6 +34,13 @@ public class Consulta {
     @Column(name = "motivo_cancelamento")
     @Enumerated(EnumType.STRING)
     private MotivoCancelamento motivoCancelamento;
+
+    public Consulta(Long id, Medico medico, Paciente paciente, LocalDateTime data) {
+        this.id = id;
+        this.medico = medico;
+        this.paciente = paciente;
+        this.data = data;
+    }
 
     public void cancelar(@NotNull MotivoCancelamento motivo) {
         this.motivoCancelamento = motivo;

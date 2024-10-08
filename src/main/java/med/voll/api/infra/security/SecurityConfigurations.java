@@ -30,7 +30,7 @@ public class SecurityConfigurations {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                .antMatchers("/swagger-ui.html", "/v3/api-docs/**").permitAll()
+                .antMatchers("/swagger-ui.html", "/v3/api-docs/**" , "/swagger-ui/**"    ).permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
